@@ -11,8 +11,12 @@
     "deploy": "next build && next export && npx thirdweb@latest upload out"
   },
   "dependencies": {
-    "@thirdweb-dev/react": "^4",
-    "@thirdweb-dev/sdk": "^4",
+    "@stripe/react-stripe-js": "^2.6.2",
+    "@stripe/stripe-js": "^3.1.0",
+    "@thirdweb-dev/auth": "4.1.31",
+    "@thirdweb-dev/engine": "^0.0.5",
+    "@thirdweb-dev/react": "4.4.2",
+    "@thirdweb-dev/sdk": "4.0.30",
     "ethers": "^5",
     "next": "^13",
     "react": "^18.2",
