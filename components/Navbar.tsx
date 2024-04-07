@@ -48,7 +48,7 @@ const Navbar = () => {
                 <Flex display={{ base: 'none', md: 'flex' }} align="center" justify="space-between" flex={1}>
                     {address && (
                         <>
-                            <Image src="/logo.png" alt="Sylicon Logo" boxSize="50px"/>
+                            <Image src="/logo.png" alt="Logo" boxSize="50px"/>
                             <Flex>
                                 <NextLink href="/" passHref>
                                     <Button as="a" px={2} variant="ghost">
@@ -86,7 +86,7 @@ const Navbar = () => {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader>Sylicon</DrawerHeader>
+                    <DrawerHeader>[Creator`s Name]</DrawerHeader>
 
                     <DrawerBody>
                         <VStack spacing={4}>
