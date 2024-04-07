@@ -254,14 +254,24 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  background-color: #131313;
+  background-color: #717bd6;
   padding: 2rem;
   border-radius: 10px;
   margin: 10px;
 }
 
+/* Mobile-friendly adjustments */
+@media screen and (max-width: 768px) {
+  .businessContainer {
+    /* Adjustments for smaller screens */
+    padding: 1rem;
+    margin: 5px;
+    /* Additional adjustments could include changing font sizes, flex-direction, etc., depending on your design needs */
+  }
+}
+
 .nftCard {
-  background-color: #131313;
+  background-color: #8dc524;
   border-radius: 10px;
   max-width: 440px;
   overflow: hidden;

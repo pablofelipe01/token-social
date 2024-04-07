@@ -101,7 +101,7 @@ const Login = () => {
 
     return (
         <div className={styles.container}>
-            <img src="/Sylicon-logo.png" alt="Sylicon Logo" />
+            <img src="/logo.png" alt="Logo" />
             
             {showConnectEmbed && (
                 <ConnectEmbed
@@ -110,7 +110,7 @@ const Login = () => {
                     }}
                 />
             )}
-        <a href="https://alchemy.veriff.com/v/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTEwNDg3OTIsInNlc3Npb25faWQiOiI1Y2M0OWE3Zi00MzM3LTQ0MTUtOTRjNC1mNjU3YTA1ZWViMGMiLCJpaWQiOiJkYTE3NDg5Ny1jNWNmLTQ1N2UtYWRiMC1kYzRlYzE2MjI2YzEifQ.6ZX7X1-DQOQMOgLnzuFCRRCIJ05fTTcbPdcVSDlCuNY" target="_blank" rel="noopener noreferrer" className={styles.button}>KYC</a>
+        
         </div>
     )
 };

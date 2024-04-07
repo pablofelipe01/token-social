@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { ACCOUNT_FACTORY_CONTRACT_ADDRESS } from "../constants/contracts";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ChakraProvider } from '@chakra-ui/react';
 
 
 // Change this to the chain your app is built for.
@@ -26,9 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         authUrl: "/api/auth"
       }}
     >
+      <ChakraProvider>
+
       <Navbar />
       <Component {...pageProps} />
       <Footer />
+      </ChakraProvider>
     </ThirdwebProvider>
   );
 }

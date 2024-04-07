@@ -1,43 +1,26 @@
+import { Box, Grid, Text } from '@chakra-ui/react';
 import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
-import styles from "../styles/Home.module.css";
 import { STAKING_CONTRACT_ADDRESS } from "../constants/contracts";
-import { BigNumber } from "ethers";
-import BusinessCard from "../components/BusinessCard";
+import BusinessCard from "./BusinessCard"; // Update the import path as necessary
+import { BigNumber } from 'ethers'; // Import BigNumber from ethers
 
 const Businesses = () => {
-    // Get the user's address needed for staking info
     const address = useAddress();
+    const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS); // Corrected a typo here from stakingContact to stakingContract
+    const { data: stakedTokens, isLoading: loadingBusinesses } = useContractRead(stakingContract, "getStakeInfo", [address]);
 
-    // Get the staking contract instance
-    // Get the staked tokens for the user
-    const { contract: stakingContact } = useContract(STAKING_CONTRACT_ADDRESS);
-    const { data: stakedTokens, isLoading: loadingBusinesses } = useContractRead(stakingContact, "getStakeInfo", [
-        address,
-    ]);
-    
     return (
-        <div className={styles.businessContainer} style={{ width: "50%" }}>
-            {!loadingBusinesses ? (
-                <>
-                    <h2>Properties:</h2>
-                    <div className={styles.grid}>
-                        {stakedTokens &&
-                            stakedTokens[0].length > 0 ? stakedTokens[0]?.map((stakedToken: BigNumber) => (
-                                <BusinessCard
-                                    key={stakedToken.toString()}
-                                    tokenId={stakedToken.toNumber()}
-                                />
-                            )) : (
-                                <p>No Properties.</p>
-                            )
-                        }
-                    </div>
-                </>
-            ) : (
-                <p>Loading properties...</p>
-            )}
-        </div>
-    )
+        <Box width={{ base: "100%", md: "50%" }} p={4}>
+            <Text fontSize="2xl" mb="4" color="blue.500" fontWeight="bold" textAlign="center" textTransform="uppercase" letterSpacing="wider">My Exclusive Content</Text>
+            <Grid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={6}>
+                {!loadingBusinesses ? (
+                    stakedTokens && stakedTokens[0].length > 0 ? stakedTokens[0].map((tokenId: BigNumber) => (
+                        <BusinessCard key={tokenId.toString()} tokenId={tokenId.toNumber()} />
+                    )) : <Text>No Exclusive Content.</Text>
+                ) : <Text>Loading Exclusive Content...</Text>}
+            </Grid>
+        </Box>
+    );
 };
 
 export default Businesses;

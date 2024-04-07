@@ -1,54 +1,47 @@
+import { Box, Flex, Heading, Text, Stack } from '@chakra-ui/react';
 import { MediaRenderer, useAddress, useContract, useOwnedNFTs, useTokenBalance } from "@thirdweb-dev/react";
-import styles from "../styles/Home.module.css";
 import { TOKEN_CONTRACT_ADDRESS, WORKER_CONTRACT_ADDRESS } from "../constants/contracts";
 
 const Worker = () => {
-    // Get the user's address to get the owned workers
     const address = useAddress();
-
-    // Get the worker contract instance
-    // Get the user's owned worker NFTs
     const { contract: workerContract } = useContract(WORKER_CONTRACT_ADDRESS);
     const { data: ownedWorkers, isLoading: loadingWorker } = useOwnedNFTs(workerContract, address);
-
-    // Get the token contract instance
-    // Get the user's token balance with address
     const { contract: tokenContract } = useContract(TOKEN_CONTRACT_ADDRESS);
     const { data: tokenBalance } = useTokenBalance(tokenContract, address);
 
-    // Truncate the number to 6 decimal places
-    const truncateNumber = (num: string) => {
-        return num.slice(0, 6);
-    }
+    const truncateNumber = (num: string) => num.slice(0, 6);
 
     return (
-        <div style={{ width: "50%"}}>
+        <Box width={{ base: "90%", md: "75%", lg: "50%" }} mx="auto">
             {!loadingWorker ? (
-                ownedWorkers && ownedWorkers.length > 0 && (
+                ownedWorkers && ownedWorkers.length > 0 ? (
                     ownedWorkers.map((worker) => (
-                        <div className={styles.workerContainer} key={worker.metadata.id}>
-                            <div>
-                                <h2>Client Account:</h2>
-                                <MediaRenderer 
-                                    key={worker.metadata.id}
-                                    src={worker.metadata.image}
-                                    style={{ borderRadius: "10px", margin: "10px 0px" }}
-                                />
-                            </div>
-                            <div>
-                                <p style={{ fontWeight: "bold"}}>{worker.metadata.name} - ID: #{worker.metadata.id}</p>
+                        <Stack key={worker.metadata.id} spacing="4" p={{ base: "3", md: "5" }} borderWidth="1px" borderRadius="lg" overflow="hidden" my="4">
+                            <Box>
+                                <Heading size="md" mb="2">Super Fan Account</Heading>
+                                <Box borderRadius="10px" overflow="hidden">
+                                    <MediaRenderer 
+                                        src={worker.metadata.image}
+                                        style={{ width: '100%', height: 'auto' }}
+                                    />
+                                </Box>
+                            </Box>
+                            <Box>
+                                <Text fontWeight="bold">{worker.metadata.name} - ID: #{worker.metadata.id}</Text>
                                 {tokenBalance && (
-                                    <p>Balance: {truncateNumber(tokenBalance?.displayValue as string)} {tokenBalance?.symbol}</p>
+                                    <Text>Balance: {truncateNumber(tokenBalance?.displayValue as string)} {tokenBalance?.symbol}</Text>
                                 )}
-                            </div>
-                        </div>
+                            </Box>
+                        </Stack>
                     ))
+                ) : (
+                    <Text textAlign="center">No Fan Found.</Text>
                 )
             ) : (
-                <p>Loading Client...</p>
+                <Text textAlign="center">Loading Fan...</Text>
             )}
-        </div>
-    )
+        </Box>
+    );
 };
 
 export default Worker;
