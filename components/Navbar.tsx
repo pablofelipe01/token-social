@@ -60,6 +60,10 @@ const Navbar = () => {
                                         Premium
                                     </Button>
                                 </NextLink>
+                                <Button as="a" href="https://dex-social.vercel.app/" px={2} variant="ghost" target="_blank" rel="noopener noreferrer">
+                                    DEX
+                                </Button>
+
                             </Flex>
                             <Flex align="center">
                                 {tokenBalance && (
@@ -100,6 +104,10 @@ const Navbar = () => {
                                     Premium
                                 </Button>
                             </NextLink>
+
+                            <Button as="a" href="https://dex-social.vercel.app/" px={2} variant="ghost" target="_blank" rel="noopener noreferrer">
+                                    DEX
+                                </Button>
                             {address && tokenBalance && (
                                 <Text w="full" textAlign="center">{truncateNumber(tokenBalance?.displayValue)} {tokenBalance?.symbol}</Text>
                             )}
