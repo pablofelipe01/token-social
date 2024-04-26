@@ -11,12 +11,13 @@ const Businesses = () => {
 
     return (
         <Box width={{ base: "100%", md: "50%" }} p={4}>
-            <Text fontSize="2xl" mb="4" color="blue.500" fontWeight="bold" textAlign="center" textTransform="uppercase" letterSpacing="wider">My Exclusive Content</Text>
+            <Text fontSize="2xl" mb="4" color="blue.500" fontWeight="bold" textAlign="center" textTransform="uppercase" letterSpacing="wider">Contenido Exclusivo</Text>
             <Grid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={6}>
                 {!loadingBusinesses ? (
                     stakedTokens && stakedTokens[0].length > 0 ? stakedTokens[0].map((tokenId: BigNumber) => (
                         <BusinessCard key={tokenId.toString()} tokenId={tokenId.toNumber()} />
-                    )) : <Text>No Exclusive Content.</Text>
+                    )) : <Text fontSize="lg" color="gray.600" textAlign="center">Aún No tienes contenido exclusivo 😔</Text>
+
                 ) : <Text>Loading Exclusive Content...</Text>}
             </Grid>
         </Box>

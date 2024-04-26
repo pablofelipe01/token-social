@@ -52,7 +52,7 @@ const Navbar = () => {
                             <Flex>
                                 <NextLink href="/" passHref>
                                     <Button as="a" px={2} variant="ghost">
-                                        Account
+                                        Cuenta
                                     </Button>
                                 </NextLink>
                                 <NextLink href="/shop" passHref>

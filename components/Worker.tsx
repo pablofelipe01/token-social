@@ -18,7 +18,7 @@ const Worker = () => {
                     ownedWorkers.map((worker) => (
                         <Stack key={worker.metadata.id} spacing="4" p={{ base: "3", md: "5" }} borderWidth="1px" borderRadius="lg" overflow="hidden" my="4">
                             <Box>
-                                <Heading size="md" mb="2">Super Fan Account</Heading>
+                                {/* <Heading size="md" mb="2">Soy Super Fan</Heading> */}
                                 <Box borderRadius="10px" overflow="hidden">
                                     <MediaRenderer 
                                         src={worker.metadata.image}
